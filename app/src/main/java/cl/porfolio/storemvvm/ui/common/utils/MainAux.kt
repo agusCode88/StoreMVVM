@@ -1,4 +1,6 @@
-package cl.porfolio.storemvvm.ui
+package cl.porfolio.storemvvm.ui.common.utils
+
+import cl.porfolio.storemvvm.ui.common.entities.StoreEntity
 
 /****
  * Project: Stores
@@ -12,7 +14,6 @@ package cl.porfolio.storemvvm.ui
  ***/
 interface MainAux {
     fun hideFab(isVisible: Boolean = false)
-
     fun addStore(storeEntity: StoreEntity)
     fun updateStore(storeEntity: StoreEntity)
 }

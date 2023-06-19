@@ -1,14 +1,24 @@
-package cl.porfolio.storemvvm.ui
+package cl.porfolio.storemvvm.ui.mainModule
 
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import cl.porfolio.storemvvm.R
 import cl.porfolio.storemvvm.databinding.ActivityMainBinding
+import cl.porfolio.storemvvm.ui.editModule.EditStoreFragment
+import cl.porfolio.storemvvm.ui.common.utils.MainAux
+import cl.porfolio.storemvvm.ui.StoreApplication
+import cl.porfolio.storemvvm.ui.common.entities.StoreEntity
+import cl.porfolio.storemvvm.ui.mainModule.adapter.OnClickListener
+import cl.porfolio.storemvvm.ui.mainModule.adapter.StoreAdapter
+import cl.porfolio.storemvvm.ui.mainModule.viewModel.MainViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,6 +31,9 @@ class MainActivity : AppCompatActivity(), OnClickListener, MainAux {
     private lateinit var mAdapter: StoreAdapter
     private lateinit var mGridLayout: GridLayoutManager
 
+    // MVVM
+    private lateinit var mMainViewModel : MainViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = ActivityMainBinding.inflate(layoutInflater)
@@ -28,7 +41,16 @@ class MainActivity : AppCompatActivity(), OnClickListener, MainAux {
 
         mBinding.fab.setOnClickListener { launchEditFragment() }
 
+        setupViewModel()
         setupRecylcerView()
+    }
+
+    private fun setupViewModel() {
+        mMainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        mMainViewModel.getStores().observe(this) { stores ->
+            mAdapter.setStores(stores)
+
+        }
     }
 
     private fun launchEditFragment(args: Bundle? = null) {
@@ -48,7 +70,7 @@ class MainActivity : AppCompatActivity(), OnClickListener, MainAux {
     private fun setupRecylcerView() {
         mAdapter = StoreAdapter(mutableListOf(), this)
         mGridLayout = GridLayoutManager(this, resources.getInteger(R.integer.main_columns))
-        getStores()
+        //getStores()
 
         mBinding.recyclerView.apply {
             setHasFixedSize(true)
@@ -60,7 +82,6 @@ class MainActivity : AppCompatActivity(), OnClickListener, MainAux {
     private fun getStores() {
         lifecycleScope.launch(Dispatchers.IO) {
             val stores = StoreApplication.database.storeDao().getAllStores()
-            mAdapter.setStores(stores)
             withContext(Dispatchers.Main) {
                 mAdapter.setStores(stores)
 

@@ -1,4 +1,4 @@
-package cl.porfolio.storemvvm.ui
+package cl.porfolio.storemvvm.ui.common.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

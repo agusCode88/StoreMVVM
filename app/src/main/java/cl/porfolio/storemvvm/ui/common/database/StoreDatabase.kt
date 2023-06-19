@@ -1,7 +1,9 @@
-package cl.porfolio.storemvvm.ui
+package cl.porfolio.storemvvm.ui.common.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import cl.porfolio.storemvvm.ui.common.database.StoreDao
+import cl.porfolio.storemvvm.ui.common.entities.StoreEntity
 
 /****
  * Project: Stores

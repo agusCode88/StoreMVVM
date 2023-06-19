@@ -1,4 +1,4 @@
-package cl.porfolio.storemvvm.ui
+package cl.porfolio.storemvvm.ui.mainModule.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import cl.porfolio.storemvvm.R
 import cl.porfolio.storemvvm.databinding.ItemStoreBinding
+import cl.porfolio.storemvvm.ui.common.entities.StoreEntity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 
@@ -52,8 +53,8 @@ class StoreAdapter(private var stores: MutableList<StoreEntity>, private var lis
 
     override fun getItemCount(): Int = stores.size
 
-    fun setStores(stores: MutableList<StoreEntity>) {
-        this.stores = stores
+    fun setStores(stores: List<StoreEntity>) {
+        this.stores = stores as MutableList<StoreEntity>
         notifyDataSetChanged()
     }
 

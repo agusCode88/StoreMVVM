@@ -1,4 +1,4 @@
-package cl.porfolio.storemvvm.ui
+package cl.porfolio.storemvvm.ui.editModule
 
 import android.content.Context
 import android.os.Bundle
@@ -11,6 +11,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import cl.porfolio.storemvvm.R
 import cl.porfolio.storemvvm.databinding.FragmentEditStoreBinding
+import cl.porfolio.storemvvm.ui.StoreApplication
+import cl.porfolio.storemvvm.ui.common.entities.StoreEntity
+import cl.porfolio.storemvvm.ui.mainModule.MainActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.snackbar.Snackbar

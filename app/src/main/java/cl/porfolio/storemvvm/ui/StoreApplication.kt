@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
+import cl.porfolio.storemvvm.ui.common.database.StoreDatabase
 
 /****
  * Project: Stores

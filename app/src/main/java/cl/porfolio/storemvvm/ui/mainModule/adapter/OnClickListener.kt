@@ -1,4 +1,6 @@
-package cl.porfolio.storemvvm.ui
+package cl.porfolio.storemvvm.ui.mainModule.adapter
+
+import cl.porfolio.storemvvm.ui.common.entities.StoreEntity
 
 /****
  * Project: Stores
