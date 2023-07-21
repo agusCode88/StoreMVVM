@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Stores">
 
-        <activity android:name=".ui.MainActivity"
+        <activity android:name=".ui.mainModule.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
