@@ -9,15 +9,20 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+/*
+Clase encargada de entregarle todos los datos provenientes de la BD
+a la vista.
+ */
 class MainViewModel: ViewModel() {
 
-    private var stores : MutableLiveData<List<StoreEntity>>
+    // Acá se almacenaran todas tiendas del modelo que tenemos
+    private var stores : MutableLiveData<List<StoreEntity>> = MutableLiveData()
 
     init {
-        stores = MutableLiveData()
         loadStores()
     }
 
+    // Esta es la propiedad que será observada para notificar en la vista
     fun getStores():MutableLiveData<List<StoreEntity>>{
         return stores
     }
