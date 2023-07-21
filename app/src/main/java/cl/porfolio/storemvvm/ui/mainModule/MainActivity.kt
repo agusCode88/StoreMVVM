@@ -1,21 +1,18 @@
 package cl.porfolio.storemvvm.ui.mainModule
-
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import cl.porfolio.storemvvm.R
 import cl.porfolio.storemvvm.databinding.ActivityMainBinding
-import cl.porfolio.storemvvm.ui.editModule.EditStoreFragment
-import cl.porfolio.storemvvm.ui.common.utils.MainAux
 import cl.porfolio.storemvvm.ui.StoreApplication
 import cl.porfolio.storemvvm.ui.common.entities.StoreEntity
+import cl.porfolio.storemvvm.ui.common.utils.MainAux
+import cl.porfolio.storemvvm.ui.editModule.EditStoreFragment
 import cl.porfolio.storemvvm.ui.mainModule.adapter.OnClickListener
 import cl.porfolio.storemvvm.ui.mainModule.adapter.StoreAdapter
 import cl.porfolio.storemvvm.ui.mainModule.viewModel.MainViewModel
@@ -45,6 +42,7 @@ class MainActivity : AppCompatActivity(), OnClickListener, MainAux {
     }
 
     private fun setupViewModel() {
+
         mMainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         mMainViewModel.getStores().observe(this) { stores ->
             mAdapter.setStores(stores)
